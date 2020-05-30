@@ -127,7 +127,7 @@ class MathSolver:
         x2 = (-b+cmath.sqrt(d))/(2*a)
         return x1, x2
 
-    def parse_equation(self, equation):
+    def solve(self, equation):
         r = re.search(self.quadratic, equation)
         if r:
             a, b, c = 1, 0, 0
@@ -138,7 +138,7 @@ class MathSolver:
             if r.group(5):
                 c = int(r.group(5))
             x1, x2 = self.quadratic_equation(a, b, c)
-            print(f"x1={x1}, x2={x2}")
+            return f"x1={x1}, x2={x2}"
         else:
             r = re.search(self.first_order, equation)
             if r:
@@ -147,11 +147,11 @@ class MathSolver:
                     a = int(r.group(1))
                 if r.group(3):
                     b = int(r.group(3))
-                print(f"x={first_order_equation(a, b)}")
+                return f"x={first_order_equation(a, b)}"
             else:
-                print("I don't understand the equation, please write it again.")
+                return "I don't understand the equation, please write it again."
 
 
 if __name__ == '__main__':
     solver = MathSolver()
-    print(solver.parse_equation("sin(cos(x))"))
+    print(solver.solve("sin(cos(x))"))
