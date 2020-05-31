@@ -4,7 +4,7 @@ from allennlp.predictors.predictor import Predictor as AllenNLPPredictor
 class TextPredictor:
     def __init__(self):
         self.predictor = AllenNLPPredictor.from_path(
-            "https://storage.googleapis.com/allennlp-public-models/bidaf-elmo-model-2018.11.30-charpad.tar.gz"
+            "https://storage.googleapis.com/allennlp-public-models/bidaf-model-2020.02.10-charpad.tar.gz"
         )
 
     def predict(self, payload):
